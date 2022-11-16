@@ -91,7 +91,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: {fileID: 7165621448933532762, guid: 2e4c6da5234763b4488aee75925efc16, type: 3}
-  _speed: 10
+  ChunkRotationSpeed: 10
+  _isAbleToMove: 0
 --- !u!1 &4012066103041285999
 GameObject:
   m_ObjectHideFlags: 0

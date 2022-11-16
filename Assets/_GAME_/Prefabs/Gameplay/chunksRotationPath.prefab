@@ -54,7 +54,5 @@ MonoBehaviour:
     roll: 0
   - position: {x: 0, y: -0.30380535, z: 27.546562}
     roll: 0
-  - position: {x: 0, y: -6.874729, z: -19.395718}
-    roll: 0
-  - position: {x: 0, y: -25.756933, z: -68.03673}
+  - position: {x: 0, y: -5.976059, z: -19.395718}
     roll: 0
