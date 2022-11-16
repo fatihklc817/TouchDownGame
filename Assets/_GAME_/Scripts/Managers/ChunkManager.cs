@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Managers;
+﻿using Game.Scripts.Behaviours;
+using Game.Scripts.Managers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,13 +18,19 @@ namespace Game.Scripts.Managers
         public override void Initialize(GameManager gameManager)
         {
             base.Initialize(gameManager);
+            GameManager.EventManager.OnStartPanelInput += callSpawnCorotuine;
             LocalStart();
-            callSpawnCorotuine();
+            
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.EventManager.OnStartPanelInput -= callSpawnCorotuine;
         }
 
         private void LocalStart()
         {
-            _timeDelayToSpawnChunks = 1 / (ChunkPrefab.GetComponent<ChunkRotatingBehaviour>().ChunkRotationSpeed / 10f); //this calculates what must be the spawntime.
+            _timeDelayToSpawnChunks = 1 / (ChunkPrefab.GetComponent<ChunkRotatingBehaviour>().ChunkRotationSpeed/ 10f); //this calculates what must be the spawntime.
             InstantiateStartingChunks();                                                                                                           //to make it seem as if it were combined
 
         }
@@ -34,7 +41,10 @@ namespace Game.Scripts.Managers
             {
 
             var currentChunk1 = Instantiate(ChunkPrefab, chunksSpawnPoint.position, Quaternion.identity, chunksParent);
-            currentChunk1.GetComponent<ChunkRotatingBehaviour>().GetThePosition(i);
+            var currentChunkRotationBehaviour = currentChunk1.GetComponent<ChunkRotatingBehaviour>();
+                currentChunkRotationBehaviour.Initialize(this);
+                currentChunkRotationBehaviour.GetThePosition(i);
+
             }
 
            
@@ -48,6 +58,10 @@ namespace Game.Scripts.Managers
         IEnumerator SpawnChunkCo()        //spawsn Chunks 
         {
             var currentChunk = Instantiate(ChunkPrefab,chunksSpawnPoint.position,Quaternion.identity,chunksParent);
+            var currentChunkRotatingBehaviour = currentChunk.GetComponent<ChunkRotatingBehaviour>();
+            currentChunkRotatingBehaviour.Initialize(this);
+            currentChunkRotatingBehaviour.MakeChunkAbleToMove();
+
             yield return new WaitForSeconds(_timeDelayToSpawnChunks);  
                                                   
             callSpawnCorotuine();

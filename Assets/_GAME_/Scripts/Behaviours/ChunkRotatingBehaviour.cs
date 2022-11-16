@@ -5,37 +5,58 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class ChunkRotatingBehaviour : MonoBehaviour
+namespace Game.Scripts.Behaviours
 {
-
-    [SerializeField] private CinemachineSmoothPath _path;
-    public float ChunkRotationSpeed= 10f;
-    private float _positionOnPath =0f;
-    [SerializeField] private bool _isAbleToMove = false;
-
-    public void GetThePosition(float posOnPath)
+    public class ChunkRotatingBehaviour : MonoBehaviour
     {
-        _positionOnPath= posOnPath;
-    }
+        public float ChunkRotationSpeed => _chunkRotationSpeed;
 
-   
+        [SerializeField] private CinemachineSmoothPath _path;
+        [SerializeField] private bool _isAbleToMove = false;
+        [SerializeField] private float _chunkRotationSpeed = 10f;
+        
+        private float _positionOnPath = 0f;
+        private ChunkManager _chunkManager;
+        
 
-    private void Update()
-    {
-        transform.position = _path.EvaluatePositionAtUnit(_positionOnPath, CinemachinePathBase.PositionUnits.Distance);
-        transform.rotation = _path.EvaluateOrientationAtUnit(_positionOnPath, CinemachinePathBase.PositionUnits.Distance);
-
-        if (_isAbleToMove)
+        public void Initialize(ChunkManager chunkManager)
         {
-        _positionOnPath += ChunkRotationSpeed * Time.deltaTime;
-
+            _chunkManager = chunkManager;
+            _chunkManager.GameManager.EventManager.OnStartPanelInput += MakeChunkAbleToMove;
         }
 
-        if (_positionOnPath > _path.PathLength)
+        private void OnDestroy()
         {
-            Destroy(gameObject);
+            _chunkManager.GameManager.EventManager.OnStartPanelInput-= MakeChunkAbleToMove;
         }
+
+        public void GetThePosition(float posOnPath)
+        {
+            _positionOnPath = posOnPath;
+        }
+
+        public void MakeChunkAbleToMove()
+        {
+            _isAbleToMove=true; 
+        }
+
+        private void Update()
+        {
+            transform.position = _path.EvaluatePositionAtUnit(_positionOnPath, CinemachinePathBase.PositionUnits.Distance);
+            transform.rotation = _path.EvaluateOrientationAtUnit(_positionOnPath, CinemachinePathBase.PositionUnits.Distance);
+
+            if (_isAbleToMove)
+            {
+                _positionOnPath += _chunkRotationSpeed * Time.deltaTime;
+
+            }
+
+            if (_positionOnPath > _path.PathLength)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+
     }
-
-
 }
