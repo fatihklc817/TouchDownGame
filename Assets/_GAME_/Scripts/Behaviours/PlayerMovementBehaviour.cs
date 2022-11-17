@@ -7,6 +7,7 @@ namespace Game.Scripts.Behaviours
 {
     public class PlayerMovementBehaviour : MonoBehaviour
     {
+        public bool IsPlayerClicking { get; set; }
 
         [SerializeField] Transform _leftLanePosition;
         [SerializeField] float _playerHorizontalMoveSpeed = 2f;
@@ -27,6 +28,7 @@ namespace Game.Scripts.Behaviours
         {
             if (Input.GetMouseButton(0))
             {
+                IsPlayerClicking = true;
                 _isMouseButtonReleased = false;
                 if (transform.position.x >= _leftLanePosition.position.x)
                 {
@@ -45,8 +47,9 @@ namespace Game.Scripts.Behaviours
 
             if (Input.GetMouseButtonUp(0))
             {
-                Debug.Log("bıraktım");
+                
                 _isMouseButtonReleased = true;
+                IsPlayerClicking = false;
                
             }
 

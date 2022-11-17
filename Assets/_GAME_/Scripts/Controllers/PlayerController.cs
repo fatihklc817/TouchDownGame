@@ -8,6 +8,8 @@ namespace Game.Scripts.Controllers
 {
     public class PlayerController : CustomBehaviour
     {
+        public PlayerMovementBehaviour PlayerMovementBehaviour => _playerMovementBehaviour;
+
         [SerializeField] PlayerMovementBehaviour _playerMovementBehaviour;
         public override void Initialize(GameManager gameManager)
         {

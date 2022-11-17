@@ -9,6 +9,7 @@ namespace Game.Scripts.Managers
     {
         public event Action OnStartGame;
         public event Action OnStartPanelInput;
+       
 
 
         public override void Initialize(GameManager gameManager)
@@ -26,6 +27,8 @@ namespace Game.Scripts.Managers
         {
             OnStartPanelInput?.Invoke();
         }
+
+       
 
     }
 }
