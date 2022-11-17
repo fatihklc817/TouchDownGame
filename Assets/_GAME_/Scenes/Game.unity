@@ -952,6 +952,7 @@ MonoBehaviour:
   EventManager: {fileID: 643970178}
   ChunkManager: {fileID: 482123136}
   UIManager: {fileID: 94675885}
+  PlayerController: {fileID: 8424914811700334912}
 --- !u!4 &1549036853
 Transform:
   m_ObjectHideFlags: 0
@@ -1033,7 +1034,37 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1572932265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1572932266}
+  m_Layer: 0
+  m_Name: Left Lane Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1572932266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572932265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.22, y: -1.12, z: -4.6725}
+  m_LocalScale: {x: 2.5457911, y: 2.5457911, z: 2.5457911}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1917622421
 PrefabInstance:
@@ -3951,6 +3982,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9196526149640063879}
   - component: {fileID: 8424914811700334910}
+  - component: {fileID: 8424914811700334912}
+  - component: {fileID: 8424914811700334911}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -3977,6 +4010,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8424914811700334911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8424914811700334909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a07cfd15c20d2c42bf6f48fb0e6da50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _leftLanePosition: {fileID: 1572932266}
+  _playerHorizontalMoveSpeed: 5
+--- !u!114 &8424914811700334912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8424914811700334909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fedbf28f2fff7c409354d3a429aab83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMovementBehaviour: {fileID: 8424914811700334911}
 --- !u!4 &8438299752552733709
 Transform:
   m_ObjectHideFlags: 0
@@ -4277,5 +4337,5 @@ Transform:
   - {fileID: 4823199125617111179}
   - {fileID: 485549266}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
