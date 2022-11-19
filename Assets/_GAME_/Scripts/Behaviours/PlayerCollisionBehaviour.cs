@@ -11,7 +11,6 @@ namespace Game.Scripts.Behaviours
         private PlayerController _playerController;
 
 
-
         public void Initialize(PlayerController playerController)
         {
             _playerController= playerController;
@@ -21,9 +20,11 @@ namespace Game.Scripts.Behaviours
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
+                other.GetComponent<Collider>().enabled = false;
                 Debug.Log("You LOST");
                 _playerController.PlayerAnimationBehaviours.Animator.enabled = false;
                 _playerController.GameManager.EventManager.LevelFailed();
+                _playerController.PlayerMovementBehaviour.DisableInput();
                 //düşma animasyonu 
                 
 

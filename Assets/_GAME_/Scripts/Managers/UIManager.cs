@@ -10,13 +10,15 @@ namespace Game.Scripts.Managers
     {
 
         [SerializeField] UIPanel _startPanel;
+        [SerializeField] UIPanel _levelFailPanel;
+        [SerializeField] UIPanel _levelSuccessPanel;
 
         private List<UIPanel> _uiPanels;
 
         public override void Initialize(GameManager gameManager)
         {
             base.Initialize(gameManager);
-            _uiPanels = new List<UIPanel> { _startPanel};
+            _uiPanels = new List<UIPanel> { _startPanel , _levelFailPanel, _levelSuccessPanel};
             for (int i = 0; i < _uiPanels.Count; i++)
             {
                 _uiPanels[i].Initialize(this);

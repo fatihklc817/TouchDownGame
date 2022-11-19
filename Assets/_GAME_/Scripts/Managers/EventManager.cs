@@ -10,6 +10,7 @@ namespace Game.Scripts.Managers
         public event Action OnStartGame;
         public event Action OnStartPanelInput;
         public event Action OnLevelFailed;
+        public event Action OnLevelSucceed;
 
        
 
@@ -35,7 +36,10 @@ namespace Game.Scripts.Managers
             OnLevelFailed?.Invoke();
         }
 
-       
+       public void LevelSucceed()
+        {
+            OnLevelSucceed?.Invoke();
+        }
 
     }
 }
