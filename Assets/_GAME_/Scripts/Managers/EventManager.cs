@@ -9,6 +9,8 @@ namespace Game.Scripts.Managers
     {
         public event Action OnStartGame;
         public event Action OnStartPanelInput;
+        public event Action OnLevelFailed;
+
        
 
 
@@ -26,6 +28,11 @@ namespace Game.Scripts.Managers
         public void StartPanelInput()
         {
             OnStartPanelInput?.Invoke();
+        }
+
+        public void LevelFailed()
+        {
+            OnLevelFailed?.Invoke();
         }
 
        

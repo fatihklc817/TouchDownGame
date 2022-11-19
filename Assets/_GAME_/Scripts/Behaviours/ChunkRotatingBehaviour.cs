@@ -33,6 +33,7 @@ namespace Game.Scripts.Behaviours
             _chunkStartingRotatingSpeedCache = _chunkRotationSpeed;
 
             _chunkManager.GameManager.EventManager.OnStartPanelInput += MakeChunkAbleToMove;
+            _chunkManager.GameManager.EventManager.OnLevelFailed += StopChunks;
            
 
         }
@@ -40,7 +41,8 @@ namespace Game.Scripts.Behaviours
         private void OnDestroy()
         {
             _chunkManager.GameManager.EventManager.OnStartPanelInput-= MakeChunkAbleToMove;
-           
+            _chunkManager.GameManager.EventManager.OnLevelFailed -= StopChunks;
+
         }
 
         public void GetThePosition(float posOnPath)
@@ -51,6 +53,11 @@ namespace Game.Scripts.Behaviours
         public void MakeChunkAbleToMove()
         {
             _isAbleToMove=true;
+        }
+
+        public void StopChunks()
+        {
+            _isAbleToMove = false;
         }
 
       

@@ -16,13 +16,15 @@ namespace Game.Scripts.Behaviours
         private float _enemyPositionOnPath;
 
         private EnemyManager _enemyManager;
+        
 
         public void Initialize(EnemyManager enemyManager)
         {
             _enemyManager = enemyManager;
-            _enemyStartingSpeedCache = _enemySpeed;
+            _enemyStartingSpeedCache = _enemySpeed;           
         
         }
+
 
 
         private void Update()
@@ -39,8 +41,11 @@ namespace Game.Scripts.Behaviours
 
             transform.position = _path.EvaluatePositionAtUnit(_enemyPositionOnPath, CinemachinePathBase.PositionUnits.Distance);
             transform.rotation = _path.EvaluateOrientationAtUnit(_enemyPositionOnPath, CinemachinePathBase.PositionUnits.Distance);
-
+            
+            
+            
             _enemyPositionOnPath += _enemySpeed * Time.deltaTime;
+            
 
             if (_enemyPositionOnPath > _path.PathLength)
             {

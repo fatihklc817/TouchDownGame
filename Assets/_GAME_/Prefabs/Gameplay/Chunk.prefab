@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 3706176565489019555}
   - component: {fileID: 2904327248638927657}
   - component: {fileID: 9159913600513148480}
+  - component: {fileID: -2562298245769687251}
   m_Layer: 0
   m_Name: Chunk
   m_TagString: Untagged
@@ -93,6 +94,20 @@ MonoBehaviour:
   _path: {fileID: 7165621448933532762, guid: 2e4c6da5234763b4488aee75925efc16, type: 3}
   _chunkRotationSpeed: 10
   _chunkBoostedRotationSpeed: 20
+--- !u!64 &-2562298245769687251
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126282766154662252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &4012066103041285999
 GameObject:
   m_ObjectHideFlags: 0
