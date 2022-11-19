@@ -9,9 +9,9 @@ namespace Game.Scripts.Managers
 {
     public class ChunkManager : CustomBehaviour
     {
-        [SerializeField] GameObject ChunkPrefab;
-        [SerializeField] Transform chunksParent;
-        [SerializeField] Transform chunksSpawnPoint;
+        [SerializeField] GameObject _chunkPrefab;
+        [SerializeField] Transform _chunksParent;
+        [SerializeField] Transform _chunksSpawnPoint;
 
         
 
@@ -25,7 +25,7 @@ namespace Game.Scripts.Managers
         private void LocalStart()
         {
             InstantiateStartingChunks();                                                                                                        
-            var firstChunk =Instantiate(ChunkPrefab, chunksSpawnPoint.position, Quaternion.identity, chunksParent);
+            var firstChunk =Instantiate(_chunkPrefab, _chunksSpawnPoint.position, Quaternion.identity, _chunksParent);
             firstChunk.GetComponent<ChunkRotatingBehaviour>().Initialize(this);
         }
 
@@ -35,7 +35,7 @@ namespace Game.Scripts.Managers
             for (int i = 10; i < 71; i+=10)
             {
 
-            var currentChunk1 = Instantiate(ChunkPrefab, chunksSpawnPoint.position, Quaternion.identity, chunksParent);
+            var currentChunk1 = Instantiate(_chunkPrefab, _chunksSpawnPoint.position, Quaternion.identity, _chunksParent);
             var currentChunkRotationBehaviour = currentChunk1.GetComponent<ChunkRotatingBehaviour>();
                 currentChunkRotationBehaviour.Initialize(this);
                 currentChunkRotationBehaviour.GetThePosition(i);
@@ -46,7 +46,7 @@ namespace Game.Scripts.Managers
 
         public void SpawnChunk()
         {
-            var currentChunk = Instantiate(ChunkPrefab, chunksSpawnPoint.position, Quaternion.identity, chunksParent);
+            var currentChunk = Instantiate(_chunkPrefab, _chunksSpawnPoint.position, Quaternion.identity, _chunksParent);
             var currentChunkRotatingBehaviour = currentChunk.GetComponent<ChunkRotatingBehaviour>();
             currentChunkRotatingBehaviour.Initialize(this);
             currentChunkRotatingBehaviour.MakeChunkAbleToMove();

@@ -5,17 +5,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StartPanel : UIPanel ,IPointerDownHandler
+namespace Game.Scripts.UI
 {
-    public override void Initialize(UIManager uiManager)
+    public class StartPanel : UIPanel, IPointerDownHandler
     {
-        base.Initialize(uiManager);
-    }
+        public override void Initialize(UIManager uiManager)
+        {
+            base.Initialize(uiManager);
+        }
 
 
-    public void OnPointerDown(PointerEventData eventData) 
-    {
-        base.HidePanel();
-        GameManager.EventManager.StartPanelInput();
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            base.HidePanel();
+            GameManager.EventManager.StartPanelInput();
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace Game.Scripts.Managers
         public ChunkManager ChunkManager;
         public UIManager UIManager;
         public PlayerController PlayerController;
+        public EnemyManager EnemyManager;
 
         private void Awake()
         {
@@ -18,6 +19,7 @@ namespace Game.Scripts.Managers
             UIManager.Initialize(this);
             ChunkManager.Initialize(this);
             PlayerController.Initialize(this);
+            EnemyManager.Initialize(this);
            
         }
 
