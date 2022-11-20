@@ -1,4 +1,5 @@
 ﻿using Game.Scripts.Controllers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,8 @@ namespace Game.Scripts.Behaviours
 
             _childColliders = _myBones.GetComponentsInChildren<Collider>();
             _childRigidBodies = _myBones.GetComponentsInChildren<Rigidbody>();
+            CloseRagdollStart();
+
 
         }
 
@@ -101,13 +104,13 @@ namespace Game.Scripts.Behaviours
             foreach (Collider col in _childColliders)
             {
                 col.enabled = false;
-                Debug.Log("colliders disabled");
+               
             }
 
             foreach (Rigidbody rb in _childRigidBodies)
             {
                 rb.isKinematic = true;
-                Debug.Log("rbs disabled");
+                
             }
 
             _myRigidBody.GetComponent<CapsuleCollider>().enabled = true;
@@ -120,16 +123,42 @@ namespace Game.Scripts.Behaviours
             foreach (Collider col in _childColliders)
             {
                 col.enabled = true;
-                Debug.Log("colliders disabled");
+                
             }
 
             foreach (Rigidbody rb in _childRigidBodies)
             {
                 rb.isKinematic = false;
-                Debug.Log("rbs disabled");
+                
             }
 
             _myRigidBody.GetComponent<CapsuleCollider>().enabled = false;
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("end"))
+            {
+                _playerRunForwardSpeed = 0;
+                _playerController.PlayerAnimationBehaviours.TriggerRandomWinAnimation();
+            }
+            
+        }
+        private void CloseRagdollStart()
+        {
+            _myRigidBody.useGravity = false;
+            foreach (Collider col in _childColliders)
+            {
+                col.enabled = false;
+
+            }
+
+            foreach (Rigidbody rb in _childRigidBodies)
+            {
+                rb.isKinematic = true;
+
+            }
+        }
+
     }
 }

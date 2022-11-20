@@ -19,7 +19,12 @@ namespace Game.Scripts.Behaviours {
         }
 
 
-       
+        public void TriggerRandomWinAnimation()
+        {
+            Animator.SetInteger("winIndex", Random.Range(0, 2));
+            
+            Animator.SetTrigger("win");
+        }
 
     }
 }
