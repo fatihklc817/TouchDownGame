@@ -141,6 +141,8 @@ namespace Game.Scripts.Behaviours
             {
                 _playerRunForwardSpeed = 0;
                 _playerController.PlayerAnimationBehaviours.TriggerRandomWinAnimation();
+                CallLevelSucceed();
+               
             }
             
         }
@@ -158,6 +160,17 @@ namespace Game.Scripts.Behaviours
                 rb.isKinematic = true;
 
             }
+        }
+
+        private void CallLevelSucceed()
+        {
+            StartCoroutine(LevelSucceedCo());
+        }
+
+        IEnumerator LevelSucceedCo() 
+        {
+            yield return new WaitForSeconds(2);
+            _playerController.GameManager.EventManager.LevelSucceed();
         }
 
     }
