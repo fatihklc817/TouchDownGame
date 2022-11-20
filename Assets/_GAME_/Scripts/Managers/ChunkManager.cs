@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Game.Scripts.Managers
 {
     public class ChunkManager : CustomBehaviour
@@ -12,6 +13,10 @@ namespace Game.Scripts.Managers
         [SerializeField] GameObject _chunkPrefab;
         [SerializeField] Transform _chunksParent;
         [SerializeField] Transform _chunksSpawnPoint;
+
+        [SerializeField] GameObject _endPrefab;
+        [SerializeField] Transform _endSpawnPoint;
+      
 
         
 
@@ -29,7 +34,20 @@ namespace Game.Scripts.Managers
             firstChunk.GetComponent<ChunkRotatingBehaviour>().Initialize(this);
         }
 
-  
+        public void SpawnTheENDChunk()
+        {
+            
+            Instantiate(_endPrefab, _endSpawnPoint.position, Quaternion.Euler(12f,0f,0f), _endSpawnPoint);
+            GameManager.EventManager.EndChunkSpawned();
+            //pathler duracak
+            //playerlar ve teammateler koşmaya başlayacak
+            //enemyspawn durabilir
+
+            GameManager.PathManager.PathRotateBehaviour.RotatePaths();
+            
+        }
+
+
         private void InstantiateStartingChunks()
         {
             for (int i = 10; i < 71; i+=10)
@@ -50,6 +68,8 @@ namespace Game.Scripts.Managers
             var currentChunkRotatingBehaviour = currentChunk.GetComponent<ChunkRotatingBehaviour>();
             currentChunkRotatingBehaviour.Initialize(this);
             currentChunkRotatingBehaviour.MakeChunkAbleToMove();
+
+          
         }
 
         

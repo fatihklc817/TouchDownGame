@@ -8,21 +8,21 @@ namespace Game.Scripts.Behaviours
 {
     public class EnemyMovementBehaviour : MonoBehaviour
     {
-        [SerializeField] private CinemachineSmoothPath _path;
         [SerializeField] private float _enemySpeed;
         [SerializeField] private float _enemyBoostedSpeed;
 
         private float _enemyStartingSpeedCache;
         private float _enemyPositionOnPath;
 
+        private CinemachineSmoothPath _path;
         private EnemyManager _enemyManager;
         
 
         public void Initialize(EnemyManager enemyManager)
         {
             _enemyManager = enemyManager;
-            _enemyStartingSpeedCache = _enemySpeed;           
-        
+            _enemyStartingSpeedCache = _enemySpeed;
+            _path = _enemyManager.GameManager.PathManager.EnemysPath;
         }
 
 

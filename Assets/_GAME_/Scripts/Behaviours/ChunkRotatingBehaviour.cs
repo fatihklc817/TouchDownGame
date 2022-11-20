@@ -15,10 +15,12 @@ namespace Game.Scripts.Behaviours
         public bool IsChunkInitial { get; set; }
 
 
-        [SerializeField] private CinemachineSmoothPath _path;
         [SerializeField] private float _chunkRotationSpeed = 10f;
         [SerializeField] private float _chunkBoostedRotationSpeed = 20f;
+        
+
        
+         private CinemachineSmoothPath _path;
          private bool _isAbleToMove = false;
         private float _chunkStartingRotatingSpeedCache;
         private float _positionOnPath = 0f;
@@ -34,6 +36,8 @@ namespace Game.Scripts.Behaviours
 
             _chunkManager.GameManager.EventManager.OnStartPanelInput += MakeChunkAbleToMove;
             _chunkManager.GameManager.EventManager.OnLevelFailed += StopChunks;
+            _chunkManager.GameManager.EventManager.OnEndChunkSpawned += StopChunks;
+            _path = _chunkManager.GameManager.PathManager.ChunksPath;
            
 
         }
@@ -42,6 +46,7 @@ namespace Game.Scripts.Behaviours
         {
             _chunkManager.GameManager.EventManager.OnStartPanelInput-= MakeChunkAbleToMove;
             _chunkManager.GameManager.EventManager.OnLevelFailed -= StopChunks;
+            _chunkManager.GameManager.EventManager.OnEndChunkSpawned -= StopChunks;
 
         }
 
@@ -87,8 +92,10 @@ namespace Game.Scripts.Behaviours
             {
                 if (_positionOnPath > 10f && !IsChunkInitial)
                 {
+                    
                     _chunkManager.SpawnChunk();
                     _didChunkPastSpawnLimitPosition = true;
+
                 }
             }
 

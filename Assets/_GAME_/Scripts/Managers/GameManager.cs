@@ -12,15 +12,16 @@ namespace Game.Scripts.Managers
         public UIManager UIManager;
         public PlayerController PlayerController;
         public EnemyManager EnemyManager;
+        public PathManager PathManager;
 
         private void Awake()
         {
             EventManager.Initialize(this);
             UIManager.Initialize(this);
+           PathManager.Initialize(this);
             ChunkManager.Initialize(this);
             PlayerController.Initialize(this);
             EnemyManager.Initialize(this);
-           
         }
 
         private void Start()

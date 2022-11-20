@@ -11,6 +11,7 @@ namespace Game.Scripts.Managers
         public event Action OnStartPanelInput;
         public event Action OnLevelFailed;
         public event Action OnLevelSucceed;
+        public event Action OnEndChunkSpawned;
 
        
 
@@ -41,5 +42,10 @@ namespace Game.Scripts.Managers
             OnLevelSucceed?.Invoke();
         }
 
+
+        public void EndChunkSpawned()
+        {
+            OnEndChunkSpawned?.Invoke();
+        }
     }
 }
