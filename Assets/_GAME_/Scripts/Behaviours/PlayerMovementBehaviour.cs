@@ -143,6 +143,7 @@ namespace Game.Scripts.Behaviours
                 _playerController.PlayerAnimationBehaviours.TriggerRandomWinAnimation();
                 CallLevelSucceed();
                 DisableInput();
+                _playerController.GameManager.CameraManager.ChangeToEndCamera();
                
             }
             

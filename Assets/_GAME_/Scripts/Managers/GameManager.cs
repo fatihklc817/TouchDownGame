@@ -14,12 +14,14 @@ namespace Game.Scripts.Managers
         public EnemyManager EnemyManager;
         public PathManager PathManager;
         public TeammateManager TeammateManager;
+        public CameraManager CameraManager;
 
         private void Awake()
         {
             EventManager.Initialize(this);
             UIManager.Initialize(this);
            PathManager.Initialize(this);
+            CameraManager.Initialize(this);
             ChunkManager.Initialize(this);
             PlayerController.Initialize(this);
             EnemyManager.Initialize(this);
