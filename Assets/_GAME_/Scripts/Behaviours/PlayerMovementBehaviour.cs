@@ -142,6 +142,7 @@ namespace Game.Scripts.Behaviours
                 _playerRunForwardSpeed = 0;
                 _playerController.PlayerAnimationBehaviours.TriggerRandomWinAnimation();
                 CallLevelSucceed();
+                DisableInput();
                
             }
             
