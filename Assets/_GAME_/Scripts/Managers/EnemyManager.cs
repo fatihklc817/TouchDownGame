@@ -8,15 +8,15 @@ namespace Game.Scripts.Managers
 {
     public class EnemyManager : CustomBehaviour
     {
+
+        public bool IsAbleToSpawn=true;
+
         [SerializeField] private List<GameObject> _enemyPrefabs;
         [SerializeField] private Transform _enemyParent;
         [SerializeField] private Transform _enemySpawnPoint;
 
         [SerializeField] private float _firstNumberOfEnemySpawnTimeRandomRange;
         [SerializeField] private float _secondNumberOfEnemySpawnTimeRandomRange;
-
-
-
 
         public override void Initialize(GameManager gameManager)
         {
@@ -32,7 +32,10 @@ namespace Game.Scripts.Managers
 
         private void SpawnEnemy()
         {
-            StartCoroutine(SpawnEnemyCO());
+            if (IsAbleToSpawn)
+            {
+               StartCoroutine(SpawnEnemyCO()); 
+            }
         }
 
 

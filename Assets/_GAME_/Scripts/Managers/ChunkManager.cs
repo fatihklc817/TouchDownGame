@@ -10,13 +10,16 @@ namespace Game.Scripts.Managers
 {
     public class ChunkManager : CustomBehaviour
     {
+        public bool IsEndChunkSpawned  = false;
+
+
         [SerializeField] GameObject _chunkPrefab;
         [SerializeField] Transform _chunksParent;
         [SerializeField] Transform _chunksSpawnPoint;
 
         [SerializeField] GameObject _endPrefab;
         [SerializeField] Transform _endSpawnPoint;
-      
+
 
         
 
@@ -39,6 +42,8 @@ namespace Game.Scripts.Managers
             
             Instantiate(_endPrefab, _endSpawnPoint.position, Quaternion.Euler(12f,0f,0f), _endSpawnPoint);
             GameManager.EventManager.EndChunkSpawned();
+            GameManager.EnemyManager.IsAbleToSpawn= false;
+            IsEndChunkSpawned=true;
             //pathler duracak
             //playerlar ve teammateler koşmaya başlayacak
             //enemyspawn durabilir

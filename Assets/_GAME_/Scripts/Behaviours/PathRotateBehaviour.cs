@@ -24,7 +24,7 @@ namespace Game.Scripts.Behaviours {
             {
                 if (_pathManager.PathsParent.transform.up.y > 0.98f)
                 {
-                    Debug.Log(_pathManager.PathsParent.transform.up.y);
+                    
                     _pathManager.PathsParent.transform.RotateAround(_pivotPoint.position, Vector3.left, 3 * Time.deltaTime);
 
                 }

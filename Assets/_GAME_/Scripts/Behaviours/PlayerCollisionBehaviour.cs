@@ -20,6 +20,7 @@ namespace Game.Scripts.Behaviours
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
+                Debug.Log("girdi fdslfads");
                 other.GetComponent<Collider>().enabled = false;
                 Debug.Log("You LOST");
                 _playerController.PlayerAnimationBehaviours.Animator.enabled = false;

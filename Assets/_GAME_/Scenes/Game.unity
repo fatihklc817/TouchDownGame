@@ -447,6 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02e020cc4e2624488f016274a3692be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsAbleToSpawn: 1
   _enemyPrefabs:
   - {fileID: 7851745714968072906, guid: dcc2a2d887bd5b54fbf7befb5614415b, type: 3}
   - {fileID: 7851745714968072906, guid: 81c0891f676bb3942a506036900227e1, type: 3}
@@ -919,6 +920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68544612376896843baf0291031befee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsEndChunkSpawned: 0
   _chunkPrefab: {fileID: 1126282766154662252, guid: c5e63d89578504cbaacdb77a4b0616b7,
     type: 3}
   _chunksParent: {fileID: 2112597573}
@@ -2152,6 +2154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsTeammatesStopping: 0
+  PassedTeammateNumber: 0
   _teammatePrefabs:
   - {fileID: 8686038047879647308, guid: 5613ba2ffa395a6479f18297705a22c5, type: 3}
   - {fileID: 1306321642275503205, guid: 8d30a08c302cb424496986055a3ed21b, type: 3}
@@ -6384,6 +6387,7 @@ GameObject:
   - component: {fileID: 9196526149640063879}
   - component: {fileID: 8424914811700334915}
   - component: {fileID: 8424914811700334913}
+  - component: {fileID: 8424914811700334917}
   - component: {fileID: 8424914811700334910}
   - component: {fileID: 8424914811700334912}
   - component: {fileID: 8424914811700334911}
@@ -6429,6 +6433,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leftLanePosition: {fileID: 1572932266}
   _playerHorizontalMoveSpeed: 10
+  _playerRunForwardSpeed: 10
+  _myRigidBody: {fileID: 8424914811700334915}
+  _myBones: {fileID: 1655573401096823451}
 --- !u!114 &8424914811700334912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6483,7 +6490,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &8424914811700334916
 MonoBehaviour:
@@ -6498,6 +6505,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 8424914811700334910}
+--- !u!136 &8424914811700334917
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8424914811700334909}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.38
+  m_Height: 1.76
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.84, z: 0}
 --- !u!4 &8438299752552733709
 Transform:
   m_ObjectHideFlags: 0

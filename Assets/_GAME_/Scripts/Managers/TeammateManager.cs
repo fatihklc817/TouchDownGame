@@ -8,14 +8,18 @@ namespace Game.Scripts.Managers
     public class TeammateManager : CustomBehaviour
     {
         public bool IsTeammatesStopping = false;
+        public int PassedTeammateNumber = 0 ;
 
         [SerializeField] private List<GameObject> _teammatePrefabs;
         [SerializeField] private Transform _teammatesParent;
         [SerializeField] private Transform _teammateSpawnPoint;
+
         [SerializeField] private int _teammateNumberToCompleteLevel;
 
         [SerializeField] private float _firstNumberOfEnemySpawnTimeRandomRange;
         [SerializeField] private float _secondNumberOfEnemySpawnTimeRandomRange;
+
+        private bool _isAbleToSpawn = true;
 
         public override void Initialize(GameManager gameManager)
         {
@@ -30,20 +34,32 @@ namespace Game.Scripts.Managers
 
         public void SpawnTeammate()
         {
-            
+            if (_isAbleToSpawn)
+            {
+
             StartCoroutine(SpawnTeammateCO());
+            }
 
             
         }
 
         IEnumerator SpawnTeammateCO()
         {
-            if (!IsTeammatesStopping)
+            if (PassedTeammateNumber < _teammateNumberToCompleteLevel)
             {
-            var currentRandomIndex = Random.Range(0,_teammatePrefabs.Count);
-            var currentTeammate = Instantiate(_teammatePrefabs[currentRandomIndex],_teammateSpawnPoint.position,Quaternion.identity,_teammatesParent);
-            currentTeammate.GetComponent<TeammateMoveBehaviour>().Initialize(this);
+                if (!IsTeammatesStopping)
+                {
+                var currentRandomIndex = Random.Range(0,_teammatePrefabs.Count);
+                var currentTeammate = Instantiate(_teammatePrefabs[currentRandomIndex],_teammateSpawnPoint.position,Quaternion.identity,_teammatesParent);
+                currentTeammate.GetComponent<TeammateMoveBehaviour>().Initialize(this);
 
+                }
+
+            }
+            else if(PassedTeammateNumber >= _teammateNumberToCompleteLevel) 
+            {
+                GameManager.ChunkManager.SpawnTheENDChunk();
+                _isAbleToSpawn = false;
             }
 
             yield return new WaitForSeconds(Random.Range(_firstNumberOfEnemySpawnTimeRandomRange, _secondNumberOfEnemySpawnTimeRandomRange));

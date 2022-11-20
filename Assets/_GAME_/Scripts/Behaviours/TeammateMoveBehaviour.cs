@@ -21,24 +21,27 @@ namespace Game.Scripts.Behaviours
         private CinemachineSmoothPath _path;
 
         private TeammateManager _teammateManager;
+        private bool _isTeammatesOnPath = true;
 
         public void Initialize(TeammateManager teammateManager)
         {
             _teammateManager = teammateManager;
             _teammateStartingSpeedCache = _teammateSpeed;
             _path = _teammateManager.GameManager.PathManager.TeammatesPath;
-            Debug.Log(_teammatePositionOnPath);
+            
             _teammatePositionOnPath = _path.PathLength;
-                Debug.Log(_teammatePositionOnPath);
+                
 
             _teammateManager.GameManager.EventManager.OnPlayerStartedCollidingWithTeammate += DisableMovement;
             _teammateManager.GameManager.EventManager.OnPlayerStoppedCollidingWithTeammate += ActivateMovement;
+            _teammateManager.GameManager.EventManager.OnEndChunkSpawned += LeaveThePath;
         }
 
         private void OnDestroy()
         {
             _teammateManager.GameManager.EventManager.OnPlayerStartedCollidingWithTeammate -= DisableMovement;
             _teammateManager.GameManager.EventManager.OnPlayerStoppedCollidingWithTeammate -= ActivateMovement;
+            _teammateManager.GameManager.EventManager.OnEndChunkSpawned -= LeaveThePath;
         }
 
         private void Update()
@@ -52,16 +55,25 @@ namespace Game.Scripts.Behaviours
                 _teammateSpeed = _teammateStartingSpeedCache;
             }
 
+            if (_isTeammatesOnPath)
+            {
             transform.position = _path.EvaluatePositionAtUnit(_teammatePositionOnPath, CinemachinePathBase.PositionUnits.Distance);
             transform.rotation = _path.EvaluateOrientationAtUnit(_teammatePositionOnPath, CinemachinePathBase.PositionUnits.Distance);
 
-            if (_isAbleToMove)
+            }
+            else if (!_isTeammatesOnPath) 
+            {
+                transform.position += Vector3.forward * Time.deltaTime * _teammateSpeed;
+            }
+
+            if (_isAbleToMove && _isTeammatesOnPath)
             {
                 _teammatePositionOnPath -= _teammateSpeed * Time.deltaTime;
             }
 
             if (_teammatePositionOnPath < 1)
             {
+                _teammateManager.PassedTeammateNumber += 1;
                 Destroy(gameObject);
             }
         }
@@ -74,6 +86,11 @@ namespace Game.Scripts.Behaviours
         private void ActivateMovement()
         {
             _isAbleToMove = true;
+        }
+
+        private void LeaveThePath()
+        {
+            _isTeammatesOnPath= false;
         }
 
 

@@ -11,6 +11,10 @@ namespace Game.Scripts.Behaviours
 
         [SerializeField] Transform _leftLanePosition;
         [SerializeField] float _playerHorizontalMoveSpeed = 2f;
+        [SerializeField] float _playerRunForwardSpeed = 10f; // after instantiating end chunk
+
+        [SerializeField] Rigidbody _myRigidBody;
+        [SerializeField] GameObject _myBones;
 
         private Vector3 _rightLanePosition;
 
@@ -31,6 +35,15 @@ namespace Game.Scripts.Behaviours
         {
             if (_isInputActive)
             {
+                if (_playerController.GameManager.ChunkManager.IsEndChunkSpawned)
+                {
+                    _myBones.SetActive(false);
+                    _myRigidBody.useGravity = true;
+                    _myRigidBody.GetComponent<CapsuleCollider>().enabled = true;
+                    
+                    transform.position += Vector3.forward * Time.deltaTime * _playerRunForwardSpeed;
+                }
+
                 if (Input.GetMouseButton(0))
                 {
                     IsPlayerClicking = true;
