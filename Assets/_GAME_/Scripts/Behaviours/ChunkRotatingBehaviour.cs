@@ -9,9 +9,7 @@ namespace Game.Scripts.Behaviours
 {
     public class ChunkRotatingBehaviour : MonoBehaviour
     {
-        public float ChunkRotationSpeed => _chunkRotationSpeed;
-        public float ChunkBoostedRotationSpeed => _chunkBoostedRotationSpeed;
- 
+        
         public bool IsChunkInitial { get; set; }
 
 
