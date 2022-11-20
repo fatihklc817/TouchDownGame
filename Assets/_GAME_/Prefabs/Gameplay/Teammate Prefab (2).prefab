@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 1831606259477653215}
   - component: {fileID: -8192885178980507578}
   - component: {fileID: -1164281266252865803}
+  - component: {fileID: 7395291098716639651}
   m_Layer: 0
   m_Name: Teammate Prefab (2)
   m_TagString: Untagged
@@ -376,6 +377,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.48, y: 1.5569409, z: 0.59881294}
   m_Center: {x: 0.007079721, y: 0.77877295, z: 0.09675685}
+--- !u!95 &7395291098716639651
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306321642275503205}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eb97209895a61904d971f732ae81782f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1421095693713528590
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,14 +2676,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8084652657850519491}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 3082043324341833796}
   m_Father: {fileID: 1831606259477653215}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!1 &8349270016859238190
 GameObject:
   m_ObjectHideFlags: 0

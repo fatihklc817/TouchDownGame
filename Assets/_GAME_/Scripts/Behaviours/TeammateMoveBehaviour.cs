@@ -2,7 +2,9 @@
 using Game.Scripts.Managers;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Game.Scripts.Behaviours
 {
@@ -12,7 +14,7 @@ namespace Game.Scripts.Behaviours
         [SerializeField] float _teammateBoostedSpeed;
 
         private float _teammateStartingSpeedCache;
-        private float _teammatePositionOnPath;
+        private float _teammatePositionOnPath = 90f;
 
         private bool _isAbleToMove=true;
 
@@ -25,6 +27,9 @@ namespace Game.Scripts.Behaviours
             _teammateManager = teammateManager;
             _teammateStartingSpeedCache = _teammateSpeed;
             _path = _teammateManager.GameManager.PathManager.TeammatesPath;
+            Debug.Log(_teammatePositionOnPath);
+            _teammatePositionOnPath = _path.PathLength;
+                Debug.Log(_teammatePositionOnPath);
 
             _teammateManager.GameManager.EventManager.OnPlayerStartedCollidingWithTeammate += DisableMovement;
             _teammateManager.GameManager.EventManager.OnPlayerStoppedCollidingWithTeammate += ActivateMovement;
@@ -52,10 +57,10 @@ namespace Game.Scripts.Behaviours
 
             if (_isAbleToMove)
             {
-                _teammatePositionOnPath += _teammateSpeed * Time.deltaTime;
+                _teammatePositionOnPath -= _teammateSpeed * Time.deltaTime;
             }
 
-            if (_teammatePositionOnPath > _path.PathLength)
+            if (_teammatePositionOnPath < 1)
             {
                 Destroy(gameObject);
             }
