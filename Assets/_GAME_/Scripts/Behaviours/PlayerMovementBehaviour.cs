@@ -15,19 +15,24 @@ namespace Game.Scripts.Behaviours
 
         [SerializeField] Rigidbody _myRigidBody;
         [SerializeField] GameObject _myBones;
+        private Collider[] _childColliders;
+        private Rigidbody[] _childRigidBodies;
 
         private Vector3 _rightLanePosition;
 
         private PlayerController _playerController;
         private bool _isMouseButtonReleased = false;
         private bool _isInputActive = true;
-        
+        private bool _isEndChunkCalledOnce = false;
 
         public void Initialize(PlayerController playerController)
         {
             _playerController = playerController;
             _rightLanePosition = transform.position;
-            
+
+            _childColliders = _myBones.GetComponentsInChildren<Collider>();
+            _childRigidBodies = _myBones.GetComponentsInChildren<Rigidbody>();
+
         }
 
 
@@ -37,9 +42,11 @@ namespace Game.Scripts.Behaviours
             {
                 if (_playerController.GameManager.ChunkManager.IsEndChunkSpawned)
                 {
-                    _myBones.SetActive(false);
-                    _myRigidBody.useGravity = true;
-                    _myRigidBody.GetComponent<CapsuleCollider>().enabled = true;
+                    if (!_isEndChunkCalledOnce)
+                    {
+                    EndChunkSpawned();
+                        _isEndChunkCalledOnce=true;
+                    }
                     
                     transform.position += Vector3.forward * Time.deltaTime * _playerRunForwardSpeed;
                 }
@@ -79,5 +86,23 @@ namespace Game.Scripts.Behaviours
             IsPlayerClicking = false;
         }
 
+        private void EndChunkSpawned()
+        {
+           // _myBones.SetActive(false);
+            _myRigidBody.useGravity = true;
+            foreach (Collider col in _childColliders)
+            {
+                col.enabled = false;
+                Debug.Log("colliders disabled");
+            }
+
+            foreach (Rigidbody rb in _childRigidBodies)
+            {
+                rb.isKinematic = true;
+                Debug.Log("rbs disabled");
+            }
+
+            _myRigidBody.GetComponent<CapsuleCollider>().enabled = true;
+        }
     }
 }
