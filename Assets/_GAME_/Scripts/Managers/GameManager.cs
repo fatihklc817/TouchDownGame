@@ -13,6 +13,7 @@ namespace Game.Scripts.Managers
         public PlayerController PlayerController;
         public EnemyManager EnemyManager;
         public PathManager PathManager;
+        public TeammateManager TeammateManager;
 
         private void Awake()
         {
@@ -22,6 +23,7 @@ namespace Game.Scripts.Managers
             ChunkManager.Initialize(this);
             PlayerController.Initialize(this);
             EnemyManager.Initialize(this);
+            TeammateManager.Initialize(this);
         }
 
         private void Start()

@@ -167,6 +167,36 @@ Transform:
   m_Father: {fileID: 1549036853}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &178280138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 178280139}
+  m_Layer: 0
+  m_Name: Teammate Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &178280139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178280138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 121.03, y: 2.5045214, z: 14.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &190032630
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +730,8 @@ MonoBehaviour:
     type: 3}
   _enemyPath: {fileID: 7390878202547099788, guid: 1cb87098644f36141bc6a1732b354e06,
     type: 3}
+  _teammatesPath: {fileID: 7390878202547099788, guid: 6abe651b55a10bf4dace6b5d13cbc2a4,
+    type: 3}
   _pathsParent: {fileID: 533134426}
 --- !u!4 &462059749
 Transform:
@@ -944,7 +976,7 @@ Transform:
   - {fileID: 238471006}
   - {fileID: 665167994}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &549420414
 GameObject:
@@ -1936,7 +1968,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1041823822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 104.17, y: 2.5045214, z: 14.6}
+  m_LocalPosition: {x: 112.35, y: 2.5045214, z: 14.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2084,11 +2116,66 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245324380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.096834, y: 2.364865, z: -42.847412}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1251862840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1251862842}
+  - component: {fileID: 1251862841}
+  m_Layer: 0
+  m_Name: Teammate manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1251862841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251862840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fcf4e902813064fa7a219f69cc1a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsTeammatesStopping: 0
+  _teammatePrefabs:
+  - {fileID: 8686038047879647308, guid: 5613ba2ffa395a6479f18297705a22c5, type: 3}
+  - {fileID: 1306321642275503205, guid: 8d30a08c302cb424496986055a3ed21b, type: 3}
+  - {fileID: 3481720982708656053, guid: f6a5c257807204842942489d31a10b94, type: 3}
+  - {fileID: 7711235115279717401, guid: 00db8df036381ff439f8a6c569be2afb, type: 3}
+  - {fileID: 5586839285603701884, guid: bfa94abd3bcc98d4d9c5bd71951ee6c1, type: 3}
+  _teammatesParent: {fileID: 1421573131}
+  _teammateSpawnPoint: {fileID: 178280139}
+  _teammateNumberToCompleteLevel: 10
+  _firstNumberOfEnemySpawnTimeRandomRange: 0.5
+  _secondNumberOfEnemySpawnTimeRandomRange: 3
+--- !u!4 &1251862842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251862840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1549036853}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1372195847
 GameObject:
@@ -2223,6 +2310,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372195847}
   m_CullTransparentMesh: 0
+--- !u!1 &1421573130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1421573131}
+  m_Layer: 0
+  m_Name: Teammates
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1421573131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421573130}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1549036851
 GameObject:
   m_ObjectHideFlags: 0
@@ -2258,6 +2375,7 @@ MonoBehaviour:
   PlayerController: {fileID: 8424914811700334912}
   EnemyManager: {fileID: 278739189}
   PathManager: {fileID: 462059748}
+  TeammateManager: {fileID: 1251862841}
 --- !u!4 &1549036853
 Transform:
   m_ObjectHideFlags: 0
@@ -2274,6 +2392,7 @@ Transform:
   - {fileID: 482123137}
   - {fileID: 278739190}
   - {fileID: 462059749}
+  - {fileID: 1251862842}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2751,7 +2870,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2141985775
 GameObject:
@@ -6336,8 +6455,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.45999998, y: 1.5276278, z: 0.83754045}
-  m_Center: {x: 0, y: 0.75245875, z: 0.10354818}
+  m_Size: {x: 0.2771317, y: 1.3146431, z: 0.30018574}
+  m_Center: {x: -0.022862071, y: 0.6633213, z: 0.637805}
 --- !u!114 &8424914811700334914
 MonoBehaviour:
   m_ObjectHideFlags: 0

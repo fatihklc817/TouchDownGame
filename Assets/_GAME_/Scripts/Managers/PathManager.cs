@@ -10,6 +10,7 @@ namespace Game.Scripts.Managers
     {
         public CinemachineSmoothPath ChunksPath { get; set; }
         public CinemachineSmoothPath EnemysPath { get; set; }
+        public CinemachineSmoothPath TeammatesPath { get; set; }
 
         public Transform PathsParent => _pathsParent;
 
@@ -18,6 +19,7 @@ namespace Game.Scripts.Managers
         [SerializeField] PathRotateBehaviour _pathRotateBehaviour;
         [SerializeField] CinemachineSmoothPath _chunksPath;
         [SerializeField] CinemachineSmoothPath _enemyPath;
+        [SerializeField] CinemachineSmoothPath _teammatesPath;
         [SerializeField] Transform _pathsParent;
 
         public override void Initialize(GameManager gameManager)
@@ -26,6 +28,7 @@ namespace Game.Scripts.Managers
             _pathRotateBehaviour.Initialize(this);
             ChunksPath = Instantiate(_chunksPath,_pathsParent);
             EnemysPath = Instantiate(_enemyPath,_pathsParent);
+            TeammatesPath = Instantiate(_teammatesPath,_pathsParent);
         }
 
         

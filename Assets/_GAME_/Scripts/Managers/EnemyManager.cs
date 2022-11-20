@@ -24,7 +24,10 @@ namespace Game.Scripts.Managers
             GameManager.EventManager.OnStartPanelInput += SpawnEnemy;
         }
 
-        
+        private void OnDestroy()
+        {
+            GameManager.EventManager.OnStartPanelInput -= SpawnEnemy;
+        }
 
 
         private void SpawnEnemy()

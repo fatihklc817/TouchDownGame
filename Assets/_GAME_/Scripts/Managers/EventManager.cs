@@ -12,8 +12,12 @@ namespace Game.Scripts.Managers
         public event Action OnLevelFailed;
         public event Action OnLevelSucceed;
         public event Action OnEndChunkSpawned;
+        public event Action OnPlayerStartedCollidingWithTeammate;
+        public event Action OnPlayerStoppedCollidingWithTeammate;
 
-       
+
+
+
 
 
         public override void Initialize(GameManager gameManager)
@@ -47,5 +51,20 @@ namespace Game.Scripts.Managers
         {
             OnEndChunkSpawned?.Invoke();
         }
+
+        public void PlayerStartedCollidingWithTeammate()
+        {
+            OnPlayerStartedCollidingWithTeammate?.Invoke();
+        }
+
+        public void PlayerStoppedCollidingWithTeammate()
+        {
+            OnPlayerStoppedCollidingWithTeammate?.Invoke();
+        }
+
+
+
+
+
     }
 }
