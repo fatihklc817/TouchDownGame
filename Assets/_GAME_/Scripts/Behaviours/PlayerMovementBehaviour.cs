@@ -47,8 +47,16 @@ namespace Game.Scripts.Behaviours
                     EndChunkSpawned();
                         _isEndChunkCalledOnce=true;
                     }
+                    if (IsPlayerClicking)
+                    {
+                    transform.position += Vector3.forward * Time.deltaTime * _playerRunForwardSpeed *2 ;
+
+                    }
+                    else
+                    {
+                        transform.position += Vector3.forward * Time.deltaTime * _playerRunForwardSpeed;
+                    }
                     
-                    transform.position += Vector3.forward * Time.deltaTime * _playerRunForwardSpeed;
                 }
 
                 if (Input.GetMouseButton(0))
@@ -103,6 +111,25 @@ namespace Game.Scripts.Behaviours
             }
 
             _myRigidBody.GetComponent<CapsuleCollider>().enabled = true;
+        }
+
+
+        public void OpenRagdollPhsyics()
+        {
+             _myRigidBody.useGravity = false;
+            foreach (Collider col in _childColliders)
+            {
+                col.enabled = true;
+                Debug.Log("colliders disabled");
+            }
+
+            foreach (Rigidbody rb in _childRigidBodies)
+            {
+                rb.isKinematic = false;
+                Debug.Log("rbs disabled");
+            }
+
+            _myRigidBody.GetComponent<CapsuleCollider>().enabled = false;
         }
     }
 }

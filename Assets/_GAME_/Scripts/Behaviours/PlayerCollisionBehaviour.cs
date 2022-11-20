@@ -24,6 +24,10 @@ namespace Game.Scripts.Behaviours
                 other.GetComponent<Collider>().enabled = false;
                 Debug.Log("You LOST");
                 _playerController.PlayerAnimationBehaviours.Animator.enabled = false;
+                if (_playerController.GameManager.ChunkManager.IsEndChunkSpawned)
+                {
+                    _playerController.PlayerMovementBehaviour.OpenRagdollPhsyics();
+                }
                 //  _playerController.GameManager.EventManager.LevelFailed();
                 StartCoroutine(callLevelFailCO());
                 _playerController.PlayerMovementBehaviour.DisableInput();

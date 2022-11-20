@@ -2163,7 +2163,7 @@ MonoBehaviour:
   - {fileID: 5586839285603701884, guid: bfa94abd3bcc98d4d9c5bd71951ee6c1, type: 3}
   _teammatesParent: {fileID: 1421573131}
   _teammateSpawnPoint: {fileID: 178280139}
-  _teammateNumberToCompleteLevel: 10
+  _teammateNumberToCompleteLevel: 5
   _firstNumberOfEnemySpawnTimeRandomRange: 0.5
   _secondNumberOfEnemySpawnTimeRandomRange: 1.5
 --- !u!4 &1251862842
