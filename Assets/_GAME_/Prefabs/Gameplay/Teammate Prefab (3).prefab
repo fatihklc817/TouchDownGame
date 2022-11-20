@@ -1201,7 +1201,7 @@ Transform:
   m_GameObject: {fileID: 3481720982708656053}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.114, y: -0.64664626, z: -2.2375164}
-  m_LocalScale: {x: 2.545791, y: 2.545791, z: 2.545791}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 937807354277985458}
   - {fileID: 6917311833826786826}
@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _teammateSpeed: 15
-  _teammateBoostedSpeed: 30
+  _teammateBoostedSpeed: 22.5
 --- !u!65 &-3707890100685730281
 BoxCollider:
   m_ObjectHideFlags: 0
