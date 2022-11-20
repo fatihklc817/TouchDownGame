@@ -91,9 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be37bf11f0c4f2c4681aa2ba0430ae2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _path: {fileID: 7165621448933532762, guid: 2e4c6da5234763b4488aee75925efc16, type: 3}
-  _chunkRotationSpeed: 10
-  _chunkBoostedRotationSpeed: 20
+  _chunkRotationSpeed: 18
+  _chunkBoostedRotationSpeed: 23
 --- !u!64 &-2562298245769687251
 MeshCollider:
   m_ObjectHideFlags: 0
