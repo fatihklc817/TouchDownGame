@@ -24,5 +24,7 @@ namespace Game.Scripts.UI
         {
             SceneManager.LoadScene(0);
         }
+
+        
     }
 }

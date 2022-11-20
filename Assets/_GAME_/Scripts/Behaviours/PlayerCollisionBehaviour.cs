@@ -23,7 +23,8 @@ namespace Game.Scripts.Behaviours
                 other.GetComponent<Collider>().enabled = false;
                 Debug.Log("You LOST");
                 _playerController.PlayerAnimationBehaviours.Animator.enabled = false;
-                _playerController.GameManager.EventManager.LevelFailed();
+                //  _playerController.GameManager.EventManager.LevelFailed();
+                StartCoroutine(callLevelFailCO());
                 _playerController.PlayerMovementBehaviour.DisableInput();
                 //düşma animasyonu 
                 
@@ -34,8 +35,14 @@ namespace Game.Scripts.Behaviours
             }
         }
 
+        IEnumerator callLevelFailCO()
+        {
+            yield return new WaitForSeconds(1);
+            _playerController.GameManager.EventManager.LevelFailed();
 
-       
+        }
+
+
 
 
 

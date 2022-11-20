@@ -63,6 +63,7 @@ namespace Game.Scripts.Behaviours
         public void DisableInput()
         {
             _isInputActive= false;
+            IsPlayerClicking = false;
         }
 
     }
