@@ -56,7 +56,7 @@ namespace Game.Scripts.Managers
                 }
 
             }
-            else if(PassedTeammateNumber >= _teammateNumberToCompleteLevel) 
+            else if(PassedTeammateNumber >= _teammateNumberToCompleteLevel)  // spawn end chunk if goal is achieved
             {
                 GameManager.ChunkManager.SpawnTheENDChunk();
                 _isAbleToSpawn = false;

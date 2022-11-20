@@ -14,7 +14,7 @@ namespace Game.Scripts.Behaviours
         [SerializeField] float _teammateBoostedSpeed;
 
         private float _teammateStartingSpeedCache;
-        private float _teammatePositionOnPath = 90f;
+        private float _teammatePositionOnPath = 90f;  // teammates run on path backwards so their run animation could be reversed
 
         private bool _isAbleToMove=true;
 
@@ -44,7 +44,7 @@ namespace Game.Scripts.Behaviours
             _teammateManager.GameManager.EventManager.OnEndChunkSpawned -= LeaveThePath;
         }
 
-        private void Update()
+        private void Update()  
         {
             if (_teammateManager.GameManager.PlayerController.PlayerMovementBehaviour.IsPlayerClicking)
             {
@@ -55,23 +55,23 @@ namespace Game.Scripts.Behaviours
                 _teammateSpeed = _teammateStartingSpeedCache;
             }
 
-            if (_isTeammatesOnPath)
+            if (_isTeammatesOnPath)  //if end chunk is not spawned they are on the path and they go on the path
             {
             transform.position = _path.EvaluatePositionAtUnit(_teammatePositionOnPath, CinemachinePathBase.PositionUnits.Distance);
             transform.rotation = _path.EvaluateOrientationAtUnit(_teammatePositionOnPath, CinemachinePathBase.PositionUnits.Distance);
 
             }
-            else if (!_isTeammatesOnPath) 
+            else if (!_isTeammatesOnPath)   // after spawn of end chunk teammates leaves the path and runs forward
             {
                 transform.position += Vector3.forward * Time.deltaTime * _teammateSpeed;
             }
 
-            if (_isAbleToMove && _isTeammatesOnPath)
+            if (_isAbleToMove && _isTeammatesOnPath)  // go on path backwards
             {
                 _teammatePositionOnPath -= _teammateSpeed * Time.deltaTime;
             }
 
-            if (_teammatePositionOnPath < 1)
+            if (_teammatePositionOnPath < 1)    // destroy when the path over and increase passedTeammateNumber to finish game.
             {
                 _teammateManager.PassedTeammateNumber += 1;
                 Destroy(gameObject);
@@ -94,7 +94,7 @@ namespace Game.Scripts.Behaviours
         }
 
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)       // stop when trigger with player.
         {
             _teammateManager.IsTeammatesStopping = true;
             _teammateManager.GameManager.EventManager.PlayerStartedCollidingWithTeammate();

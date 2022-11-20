@@ -11,12 +11,12 @@ namespace Game.Scripts.Behaviours
         public bool IsPlayerClicking { get; set; }
 
         [SerializeField] Transform _leftLanePosition;
-        [SerializeField] float _playerHorizontalMoveSpeed = 2f;
+        [SerializeField] float _playerHorizontalMoveSpeed = 2f;  
         [SerializeField] float _playerRunForwardSpeed = 10f; // after instantiating end chunk
 
         [SerializeField] Rigidbody _myRigidBody;
         [SerializeField] GameObject _myBones;
-        private Collider[] _childColliders;
+        private Collider[] _childColliders;               //for ragdoll
         private Rigidbody[] _childRigidBodies;
 
         private Vector3 _rightLanePosition;
@@ -43,7 +43,7 @@ namespace Game.Scripts.Behaviours
         {
             if (_isInputActive)
             {
-                if (_playerController.GameManager.ChunkManager.IsEndChunkSpawned)
+                if (_playerController.GameManager.ChunkManager.IsEndChunkSpawned)  //if end chunk spawned players start running (normally does not chunks rotate)
                 {
                     if (!_isEndChunkCalledOnce)
                     {
@@ -62,7 +62,7 @@ namespace Game.Scripts.Behaviours
                     
                 }
 
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButton(0))   //go left with input
                 {
                     IsPlayerClicking = true;
                     _isMouseButtonReleased = false;
@@ -73,7 +73,7 @@ namespace Game.Scripts.Behaviours
                     }
                 }
 
-                if (_isMouseButtonReleased)
+                if (_isMouseButtonReleased)  // go back to right 
                 {
                     if (transform.position.x <= _rightLanePosition.x)
                     {
@@ -97,7 +97,7 @@ namespace Game.Scripts.Behaviours
             IsPlayerClicking = false;
         }
 
-        private void EndChunkSpawned()
+        private void EndChunkSpawned()  // when end chunk spawned do these... 
         {
            // _myBones.SetActive(false);
             _myRigidBody.useGravity = true;
@@ -117,7 +117,7 @@ namespace Game.Scripts.Behaviours
         }
 
 
-        public void OpenRagdollPhsyics()
+        public void OpenRagdollPhsyics() // open ragdoll physics
         {
              _myRigidBody.useGravity = false;
             foreach (Collider col in _childColliders)
@@ -135,7 +135,7 @@ namespace Game.Scripts.Behaviours
             _myRigidBody.GetComponent<CapsuleCollider>().enabled = false;
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)   // when triggers with end do these...
         {
             if (other.CompareTag("end"))
             {
@@ -148,7 +148,7 @@ namespace Game.Scripts.Behaviours
             }
             
         }
-        private void CloseRagdollStart()
+        private void CloseRagdollStart()  // close ragdoll at start 
         {
             _myRigidBody.useGravity = false;
             foreach (Collider col in _childColliders)
